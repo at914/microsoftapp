@@ -35,7 +35,7 @@ const ChatApp = () => {
       <main className="chat-container">
         {/* Header */}
         <header className="chat-header">
-          <h2>Healing AI</h2>
+          <h2>Chatboat AI App</h2>
           <button className="profile-btn">
             User Profile
           </button>
