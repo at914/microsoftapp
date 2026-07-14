@@ -1,36 +1,38 @@
-import React, { useEffect } from "react";
-import { app } from "@microsoft/teams-js";
+import React, { useEffect, useState } from "react";
+import { getUserProfile } from "../components/services/GraphService";
 
-function App() {
+function UserProfile() {
+
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
-    const getUser = async () => {
+
+    async function loadUser() {
       try {
-        await app.initialize();
-
-        const context = await app.getContext();
-
-        window.alert("User Details:", context.user);
-
-        /*
-        {
-            id: "aad-object-id",
-            displayName: "Amrut Telavane",
-            userPrincipalName: "user@company.com"
-        }
-        */
+        const profile = await getUserProfile();
+        setUser(profile);
       } catch (error) {
-        console.error("Error getting Teams context:", error);
+        console.error(error);
       }
-    };
+    }
 
-    getUser();
+    loadUser();
+
   }, []);
+
+  if (!user)
+    return <div>Loading...</div>;
 
   return (
     <div>
-      <h1>Microsoft Teams React App</h1>
+      <h2>User Information</h2>
+
+      <p>Name: {user.displayName}</p>
+      <p>Email: {user.mail}</p>
+      <p>Job Title: {user.jobTitle}</p>
+      <p>Department: {user.department}</p>
     </div>
   );
 }
 
-export default App;
+export default UserProfile;
