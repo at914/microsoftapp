@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserProfile } from "../components/services/GraphService";
+import { getUserProfile } from "../services/GraphService";
 
 function UserProfile() {
 
