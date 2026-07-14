@@ -1,13 +1,14 @@
 import './App.css';
 import ChatApp from './components/ChatApp'
-import UserDetails from './components/UserDetails'
+import UserProfile from './components/UserProfile'
 
 function App() {
   return (
     <div className="App">
       <ChatApp/>
-      <UserDetails/>
+      <UserProfile/>
     </div>
   );
 }
+
 export default App;
