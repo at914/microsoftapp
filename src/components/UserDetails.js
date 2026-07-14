@@ -1,20 +1,36 @@
+import React, { useEffect } from "react";
 import { app } from "@microsoft/teams-js";
 
-async function getUser() {
-  await app.initialize();
+function App() {
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        await app.initialize();
 
-  const context = await app.getContext();
+        const context = await app.getContext();
 
-  console.log(context.user);
+        window.alert("User Details:", context.user);
 
-  /*
-  {
-      id: "aad-object-id",
-      displayName: "Amrut Telavane",
-      userPrincipalName: "user@company.com"
-  }
-  */
+        /*
+        {
+            id: "aad-object-id",
+            displayName: "Amrut Telavane",
+            userPrincipalName: "user@company.com"
+        }
+        */
+      } catch (error) {
+        console.error("Error getting Teams context:", error);
+      }
+    };
+
+    getUser();
+  }, []);
+
+  return (
+    <div>
+      <h1>Microsoft Teams React App</h1>
+    </div>
+  );
 }
 
-getUser();
-export default getUser()
+export default App;
