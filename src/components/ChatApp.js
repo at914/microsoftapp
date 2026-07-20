@@ -1,7 +1,7 @@
 import React from "react";
 import '../style/ChatApp.css'
 
-const ChatApp = () => {
+const ChatApp = (props) => {
   return (
     <div className="chat-app">
       {/* Sidebar */}
@@ -35,10 +35,10 @@ const ChatApp = () => {
       <main className="chat-container">
         {/* Header */}
         <header className="chat-header">
-          <h2>Chatboat AI App</h2>
-          <button className="profile-btn">
-            User Profile
-          </button>
+          <h2>Microsoft Teams App Integration</h2>
+          <h2>
+            Hello, {props.userName}
+          </h2>
         </header>
 
         {/* Messages */}
@@ -70,7 +70,7 @@ const ChatApp = () => {
             type="text"
             placeholder="Type your message..."
           />
-          <button>Send</button>
+          <button className="sendData">Send</button>
         </footer>
       </main>
     </div>
